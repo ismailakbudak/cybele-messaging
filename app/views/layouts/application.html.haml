@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %title first
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .container-narrow
+      .masthead
+        %ul.nav.nav-pills.pull-right
+          %li.active
+            %a{:href => "/"} Home
+          %li
+            %a{:href => "/rails/routes"} Routes
+        %h3.muted= link_to "first", root_path
+      
+      - [:notice, :error, :success].each do |key|
+        - unless flash[key].blank?
+          %p{ :class => "flash #{key}" }= flash[key] 
+      
+      %hr/
+      = yield
+      %hr/
+      .footer
+        %p © Company 2013

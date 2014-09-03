@@ -1,0 +1,12 @@
+%tr
+  %td= product.id
+  %td= product.name
+  %td= product.description
+  %td= product.price
+  %td.action
+    = link_to( product, class: 'btn btn-success', toogle: 'tooltip', title: t('tooltips.zoom')) do
+      %i.icon-zoom-in Detail
+    = link_to(edit_product_path(product) , class: 'btn btn-info') do
+      %i.icon-edit Update
+    = link_to(product, class: 'btn btn-danger', method: :delete) do
+      %i.icon-trash Delete

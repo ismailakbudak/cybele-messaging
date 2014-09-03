@@ -1,0 +1,10 @@
+ 
+.panel.panel-default.grid
+  = link_to new_product_path, class: 'btn btn-default' do
+    %i.icon-plus New Product
+    = t('action_button.new', resource_name: Product.model_name.human)
+
+  =blankable(@products)
+  .panel-footer
+    .pagination.pagination-sm
+      = will_paginate @products, renderer: BootstrapPagination::Rails, bootstrap: 3

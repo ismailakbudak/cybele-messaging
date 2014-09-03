@@ -1,0 +1,21 @@
+.panel-heading
+  %i.icon-table.icon-large
+  = t('tt.index', resource_name: Product.model_name.human)
+  .panel-tools
+    .btn-group
+      %a.btn{href: products_path, data: {toggle: 'toolbar-tooltip'}, title: 'Reload'}
+        %i.icon-refresh
+    .badge= @products.total_entries
+.panel-body.filters
+  = render 'filters'
+%table.table
+  %thead
+    %tr
+      %th #
+      %th= sort_link(@search, :name, t('activerecord.attributes.product.name'))
+      %th= sort_link(@search, :description, t('activerecord.attributes.product.description'))
+      %th= sort_link(@search, :price, t('activerecord.attributes.product.price'))
+      %th.actions
+        Actions
+  %tbody
+    = render @products
